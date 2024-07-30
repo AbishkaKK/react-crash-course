@@ -80,7 +80,7 @@ This is a project I made with the help of a [[YouTube video](https://youtu.be/Sq
 - Create a new file: listGroup.tsx in the components folder
 - Create a new component ListGroup and fill it up
 - Export the component and import it in the Message.tsx to display ListGroup
-- Create a list item using the "<ul><li/></ul>" like:
+- Create a list item using the HTML ul tag like:
   ```js
   <ul class="list-group">
     <li class="list-group-item">An item</li>
@@ -94,7 +94,7 @@ This is a project I made with the help of a [[YouTube video](https://youtu.be/Sq
 ### Fragments
 
 - js can only return once. We cannot have more than 1 return statement.
-- To return more than once, we can wrap all the return statements in a <div> or in a <Fragment> (we will have to import Fragment from react) or just use angle brackets: <> </> like:
+- To return more than once, we can wrap all the return statements in a "div" tag or in a "Fragment" tag (we will have to import Fragment from react) or just use angle brackets <> </> like:
   ```js
   <>
     <h1>List Group</h1>
@@ -113,7 +113,7 @@ This is a project I made with the help of a [[YouTube video](https://youtu.be/Sq
 - Mapping converts each item in an array to an item of a different type.
 - Syntax:
   `arrayName.map();`
-- like:
+  - like:
   ```js
   {
     items.map((item) => <li key={item}>{item}</li>);
@@ -156,3 +156,22 @@ return (
 - Another form of if statement:
 
 `js {items.length === 0 && <p>No items founds</p>}`
+
+## Handling Events
+
+- Handling an onClick event like:
+
+`js const handleClick = (event: MouseEvent) => console.log(event);`
+
+- we will import MouseEvent from react, because otherwise React wouldn't know what the event is
+
+### Managing State
+
+- Useing useState to manage the state of the items when clicked
+
+```js
+const [selectedIndex, setSelectedIndex] = useState(-1);
+onClick={() => {
+  setSelectedIndex(index);
+}}
+```

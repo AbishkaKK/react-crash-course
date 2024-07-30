@@ -1,8 +1,9 @@
-import Message from "./Message"
+import ListGroup from "./components/listGroup";
 
 // Adding the Message.tsx in this component
 function App(){
-  return <div><Message/></div>;
+  return <div><ListGroup/></div>;
+
 }
 
 //Export App()

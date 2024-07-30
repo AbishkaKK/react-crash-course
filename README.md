@@ -48,3 +48,111 @@ This is a project I made with the help of a [[YouTube video](https://youtu.be/Sq
 - Fill up the App component by importing Message.tsx
 - Export the App component by:
   `export default App;`
+
+## Library vs Framework
+
+### Library
+
+- A tool that provides specific functionality. React is a library.
+- Think of Library as a plumber's tool
+- React is only concerned about creating dynamic UI. It does not work around routing, making HTTP calls, managing app state, internationalization, form validation or animations.
+- Other tools should be used for all the things React does not work with as mentioned above.
+
+### Framework
+
+- A set of tools and guidelines for building apps
+- Think of framework as a plumber's toolset with all the different tools in it
+
+## Building Components
+
+### Creating a ListGroup Component
+
+- Install Bootstrap - CSS library
+  `npm install bootstrap@latest`
+- Import the installed bootstrap into one of the CSS files in the src folder
+  - Delete everything in App.css
+  - Deleted the whole index.css file
+  - Go to main.tsx and change the import of index.css to:
+    `import 'bootstrap/dist/css/bootstrap.css'`
+- Open in dev to see if Bootstrap is working:
+  - The Hello World should have moved from the middle of the page to the top of the page
+- Create a new folder in the src folder: components
+- Create a new file: listGroup.tsx in the components folder
+- Create a new component ListGroup and fill it up
+- Export the component and import it in the Message.tsx to display ListGroup
+- Create a list item using the "<ul><li/></ul>" like:
+  ```js
+  <ul class="list-group">
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
+    <li class="list-group-item">A fourth item</li>
+    <li class="list-group-item">And a fifth one</li>
+  </ul>
+  ```
+
+### Fragments
+
+- js can only return once. We cannot have more than 1 return statement.
+- To return more than once, we can wrap all the return statements in a <div> or in a <Fragment> (we will have to import Fragment from react) or just use angle brackets: <> </> like:
+  ```js
+  <>
+    <h1>List Group</h1>
+    <ul className="list-group">
+      {items.map((item) => (
+        <li key={item}>{item}</li>
+      ))}
+    </ul>
+  </>
+  ```
+
+### Rendering Lists
+
+- There is not loops in jsx, so we cannot print an array by looping through them.
+- Thats where we use "Mapping"
+- Mapping converts each item in an array to an item of a different type.
+- Syntax:
+  `arrayName.map();`
+- like:
+  ```js
+  {
+    items.map((item) => <li key={item}>{item}</li>);
+  }
+  ```
+
+### Conditional Rendering
+
+```js
+let items = ["New York", "San Francisco", "Tokyo", "London", "Paris"];
+items = [];
+
+if (items.length === 0)
+  return (
+    <>
+      <h1>List Group</h1>
+      <p>No items found</p>
+    </>
+  );
+return (
+  <>
+    <h1>List Group</h1>
+    <ul className="list-group">
+      {items.map((item) => (
+        <li key={item}>{item}</li>
+      ))}
+    </ul>
+  </>
+);
+```
+
+- In the return statement, we cannot include conditional statements like if...else. But it is possible to use them if we include them in {} like:
+
+```js
+{
+  items.length === 0 ? <p>No items found</p> : null;
+}
+```
+
+- Another form of if statement:
+
+`js {items.length === 0 && <p>No items founds</p>}`
